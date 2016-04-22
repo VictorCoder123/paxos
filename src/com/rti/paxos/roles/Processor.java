@@ -20,10 +20,10 @@ import com.rti.dds.type.builtin.StringTypeSupport;
 public class Processor extends DataReaderAdapter {
     // For clean shutdown sequence
     private static boolean shutdown_flag = false;
-    private DomainParticipant participant;
-    private StringDataReader dataReader;
-    private StringDataWriter dataWriter;
-    private Topic topic;
+    DomainParticipant participant;
+    StringDataReader dataReader;
+    StringDataWriter dataWriter;
+    Topic topic;
 
     /**
      * Processor Constructor to create topic, domain participant and
@@ -38,14 +38,6 @@ public class Processor extends DataReaderAdapter {
                 StatusKind.STATUS_MASK_NONE);
         // Fail to create domain participant.
         if (participant == null) System.err.println("Unable to create domain participant");
-
-        // Create new topic
-        topic = createTopic("Hello World");
-        if(topic == null) return;
-
-        // Create reader and writer based on topic
-        dataReader = createReader(topic);
-        dataWriter = createWriter(topic);
     }
 
     /**
@@ -150,12 +142,5 @@ public class Processor extends DataReaderAdapter {
         System.out.println("Shutting down...");
         participant.delete_contained_entities();
         DomainParticipantFactory.get_instance().delete_participant(participant);
-    }
-
-    // Create and run a processor.
-    public static final void main(String[] args) {
-        // Create new processor and start it.
-        Processor processor = new Processor();
-        processor.start();
     }
 }
