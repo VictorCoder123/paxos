@@ -33,7 +33,7 @@ public class Acceptor extends Processor {
                 int sample_value = sp.getProposal();
                 // Send back promise only it's larger than current value
                 if (info.valid_data && sample_value > value) {
-                    System.out.println(sample_value);
+                    System.out.println("Receive proposal " + sample + " and return promise.");
                     value = sample_value;
                     Thread.sleep(rand.nextInt(2000));
                     publish(sample); // Send it back to proposers as accepted.

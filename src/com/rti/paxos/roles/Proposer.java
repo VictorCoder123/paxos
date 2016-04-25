@@ -44,6 +44,7 @@ public class Proposer extends Processor {
         numAccepted = 0;
         String msg = StringParser.createMsg(ID, proposal);
         publish(msg);
+        System.out.println(ID + " sends proposal " + Integer.toString(proposal));
     }
 
     @Override
@@ -59,8 +60,11 @@ public class Proposer extends Processor {
                 // Ignore response if it is from previous session or other proposer.
                 if (info.valid_data && sample_value >= proposal
                         && ID.equalsIgnoreCase(sample_id)) {
-                    System.out.println(sample_value);
+                    System.out.println("Receive promise from Acceptor: " + Integer.toString(sample_value));
                     numAccepted++;
+                }
+                else {
+                    System.out.println("Message invalid or ignored.");
                 }
             }
             catch (RETCODE_NO_DATA noData) { break;}
