@@ -14,7 +14,7 @@ git clone https://github.com/VictorCoder123/paxos.git
  ~/paxos/dep/rti_connext_dds-5.2.0-pro-target-x64Linux3gcc4.8.2.rtipkg
  ~/paxos/dep/rti_license.dat
 ```
-* Build Docker image in format of **<repo>/<imagename>:tag** from Dockerfile in main directory
+* Build Docker image in format of `<repo>/<imagename>:tag` from Dockerfile in main directory
 ```
 docker build -t zhangqs/rti_dds:5.2.0 .
 ```
@@ -22,17 +22,35 @@ docker build -t zhangqs/rti_dds:5.2.0 .
 ```
 docker run -i -t zhangqs/rti_dds:5.2.0 /bin/bash
 ```
-### Run simple pub-sub example
-* Run publisher inside the container
+
+### Run Paxos example in multiple containers
+* In bash script `runContainer.sh`, replace Image ID and path with your own and add more containers if you need more, then run this script in command line.
 ```
-cd $RTI_WORKSPACE/5.2.0/examples/connext_dds/java/hello_simple
+// Customize this command with local configuration in 'runContainer.sh'
+docker run -d -v /home/qishen/Desktop/Projects/paxos:/home/root/rti_workspace/5.2.0/examples/connext_dds/java/paxos -p 5003:80 -i 4878a6a8e076 
+// Run this script
+sh ./runContainer.sh
+```
+* By default number of Acceptors is 2 and if you create more Acceptors, then parameter in `RunProposer.java` needs to be changed.
+```
+public static void main(String[] args) {
+    System.out.println("Start Simulation");
+    UUID id = UUID.randomUUID();
+    // Change number of acceptors below.
+    Proposer proposer = new Proposer(id.toString(), 2);
+    proposer.start();
+}
+```
+* Run Acceptor inside the container
+```
+cd $RTI_WORKSPACE/5.2.0/examples/connext_dds/java/paxos/
 Build the example with: ./build.sh
-Run publisher with: ./runPub.sh
+Run publisher with: ./runAcceptor.sh
 ```
 
-* Run subscriber inside container
+* Run Proposer inside container
 ```
-cd $RTI_WORKSPACE/5.2.0/examples/connext_dds/java/hello_simple
+cd $RTI_WORKSPACE/5.2.0/examples/connext_dds/java/paxos/
 Build the example with: ./build.sh
-Run subscriber with: ./runSub.sh
+Run subscriber with: ./runProposer.sh
 ```

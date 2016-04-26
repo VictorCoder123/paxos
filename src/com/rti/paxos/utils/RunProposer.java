@@ -9,8 +9,9 @@ import com.rti.paxos.roles.Proposer;
 public class RunProposer {
     public static void main(String[] args) {
         System.out.println("Start Simulation");
+        // Create unique ID to each proposer in order to be recognized by acceptors.
         UUID id = UUID.randomUUID();
-        Proposer proposer = new Proposer(id.toString(), 4);
+        Proposer proposer = new Proposer(id.toString(), 2);
         proposer.start();
     }
 }

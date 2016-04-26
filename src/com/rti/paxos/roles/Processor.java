@@ -17,13 +17,11 @@ import com.rti.dds.type.builtin.StringDataWriter;
 import com.rti.dds.type.builtin.StringTypeSupport;
 
 
-public class Processor extends DataReaderAdapter {
+public class Processor {
+
     // For clean shutdown sequence
     private static boolean shutdown_flag = false;
     DomainParticipant participant;
-    StringDataReader dataReader;
-    StringDataWriter dataWriter;
-    Topic topic;
 
     /**
      * Processor Constructor to create topic, domain participant and
@@ -61,12 +59,12 @@ public class Processor extends DataReaderAdapter {
      * @param topic
      * @return StringDataReader
      */
-    public StringDataReader createReader(Topic topic){
+    public StringDataReader createReader(Topic topic, DataReaderAdapter adaptor){
         // Create the data reader using the default subscriber
         StringDataReader new_dataReader = (StringDataReader) participant.create_datareader(
                 topic,
                 Subscriber.DATAREADER_QOS_DEFAULT,
-                new Processor(),         // Listener
+                adaptor,         // Listener
                 StatusKind.DATA_AVAILABLE_STATUS);
         // Fail to create dataReader
         if (new_dataReader == null) System.err.println("Unable to create DDS Data Reader");
@@ -92,37 +90,12 @@ public class Processor extends DataReaderAdapter {
     /**
      * Use data writer to publish or broadcast message to other
      * existing receivers given certain topic.
+     * @param writer
      * @param message
      */
-    public void publish(String message){
-        dataWriter.write(message, InstanceHandle_t.HANDLE_NIL);
+    public void publish(StringDataWriter writer, String message){
+        writer.write(message, InstanceHandle_t.HANDLE_NIL);
     };
-
-    /**
-     * This method gets called back by DDS when one or more data samples have
-     * been received.
-     */
-    public void on_data_available(DataReader reader) {
-        StringDataReader stringReader = (StringDataReader) reader;
-        SampleInfo info = new SampleInfo();
-        for (;;) {
-            try {
-                String sample = stringReader.take_next_sample(info);
-                if (info.valid_data) {
-                    System.out.println(sample);
-                    if (sample.equals("")) {
-                        shutdown_flag = true;
-                    }
-                }
-            } catch (RETCODE_NO_DATA noData) {
-                // No more data to read
-                break;
-            } catch (RETCODE_ERROR e) {
-                // An error occurred
-                e.printStackTrace();
-            }
-        }
-    }
 
     /**
      * Start the simulation of processor on network

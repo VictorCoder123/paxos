@@ -6,32 +6,78 @@ import com.rti.dds.infrastructure.RETCODE_ERROR;
 import com.rti.dds.infrastructure.RETCODE_NO_DATA;
 import com.rti.dds.infrastructure.StatusKind;
 import com.rti.dds.subscription.DataReader;
+import com.rti.dds.subscription.DataReaderAdapter;
 import com.rti.dds.subscription.SampleInfo;
 import com.rti.dds.subscription.Subscriber;
 import com.rti.dds.topic.Topic;
 import com.rti.dds.domain.DomainParticipantFactory;
 import com.rti.dds.type.builtin.StringDataReader;
+
+import com.rti.dds.type.builtin.StringDataWriter;
 import com.rti.paxos.utils.StringParser;
 
 public class Proposer extends Processor {
 
+    public class ProposerAdaptor extends DataReaderAdapter {
+
+        public void on_data_available(DataReader reader) {
+            StringDataReader stringReader = (StringDataReader) reader;
+            SampleInfo info = new SampleInfo();
+            for (;;) {
+                try {
+                    String sample = stringReader.take_next_sample(info);
+                    StringParser sp = new StringParser(sample);
+                    int sample_value = sp.getProposal();
+                    String sample_id = sp.getID();
+                    // Ignore response if it is from previous session or other proposer.
+                    if (info.valid_data && sample_value >= proposal
+                            && ID.equalsIgnoreCase(sample_id)) {
+                        System.out.println("Receive promise from Acceptor: " + Integer.toString(sample_value));
+                        numAccepted++;
+                    }
+                    else {
+                        System.out.println("Message invalid or ignored.");
+                    }
+                }
+                catch (RETCODE_NO_DATA noData) { break;}
+                catch (RETCODE_ERROR e) { e.printStackTrace();}
+            }
+        }
+    }
+
+    // Initialize with default values
     private String ID;
     private int proposal = 0;
     private Random rand = new Random();
     private int numQuorum;
     private int numAccepted = 0;
 
+    // Create topics
+    private Topic prepareTopic;
+    private Topic promiseTopic;
+    private Topic acceptTopic;
+
+    // Create readers and writers
+    private StringDataReader promiseReader;
+    private StringDataWriter prepareWriter;
+    private StringDataWriter acceptWriter;
+
     /**
      * Constructor for Proposer
      */
     public Proposer(String id, int Quorum){
         super();
+
         numQuorum = Quorum;
         ID = id;
-        topic = createTopic("Prepare");
-        Topic readTopic = createTopic("Promise");
-        dataWriter = createWriter(topic);
-        dataReader = createReader(readTopic);
+
+        prepareTopic = createTopic("Prepare");
+        promiseTopic = createTopic("Promise");
+        acceptTopic = createTopic("Accepted");
+
+        promiseReader = createReader(promiseTopic, new ProposerAdaptor());
+        prepareWriter = createWriter(prepareTopic);
+        acceptWriter = createWriter(acceptTopic);
     }
 
     /**
@@ -39,52 +85,18 @@ public class Proposer extends Processor {
      * to all existing acceptors
      */
     public void sendProposal(){
-        proposal += rand.nextInt(10);
         if(numAccepted >= numQuorum/2 + 1){
-            // TODO: Commit value in current proposal, otherwise ignore it.
+            // Current proposal reach consensus and send accepted message back to all acceptors
+            System.out.println("Reach consensus to commit current value of proposal: "
+                    + Integer.toString(proposal));
+            String acceptMsg = StringParser.createMsg(ID, proposal);
+            publish(acceptWriter, acceptMsg);
         }
+        proposal += rand.nextInt(10);
         numAccepted = 0;
         String msg = StringParser.createMsg(ID, proposal);
-        publish(msg);
+        publish(prepareWriter, msg);
         System.out.println(ID + " sends proposal " + Integer.toString(proposal));
-    }
-
-    @Override
-    public StringDataReader createReader(Topic topic){
-        // Create the data reader using the default subscriber
-        StringDataReader new_dataReader = (StringDataReader) participant.create_datareader(
-                topic,
-                Subscriber.DATAREADER_QOS_DEFAULT,
-                new Proposer("", 0),         // Listener
-                StatusKind.DATA_AVAILABLE_STATUS);
-        // Fail to create dataReader
-        if (new_dataReader == null) System.err.println("Unable to create DDS Data Reader");
-        return new_dataReader;
-    }
-
-    @Override
-    public void on_data_available(DataReader reader) {
-        StringDataReader stringReader = (StringDataReader) reader;
-        SampleInfo info = new SampleInfo();
-        for (;;) {
-            try {
-                String sample = stringReader.take_next_sample(info);
-                StringParser sp = new StringParser(sample);
-                int sample_value = sp.getProposal();
-                String sample_id = sp.getID();
-                // Ignore response if it is from previous session or other proposer.
-                if (info.valid_data && sample_value >= proposal
-                        && ID.equalsIgnoreCase(sample_id)) {
-                    System.out.println("Receive promise from Acceptor: " + Integer.toString(sample_value));
-                    numAccepted++;
-                }
-                else {
-                    System.out.println("Message invalid or ignored.");
-                }
-            }
-            catch (RETCODE_NO_DATA noData) { break;}
-            catch (RETCODE_ERROR e) { e.printStackTrace();}
-        }
     }
 
     @Override
