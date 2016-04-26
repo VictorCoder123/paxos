@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="61cbcda5-8243-40fd-aca2-9551ac70cef3" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rti/paxos/roles/Acceptor.java" afterPath="$PROJECT_DIR$/src/com/rti/paxos/roles/Acceptor.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rti/paxos/roles/Processor.java" afterPath="$PROJECT_DIR$/src/com/rti/paxos/roles/Processor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rti/paxos/roles/Proposer.java" afterPath="$PROJECT_DIR$/src/com/rti/paxos/roles/Proposer.java" />
     </list>
     <ignored path="paxos.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,10 +35,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RunProposer.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="RunProposer.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/rti/paxos/utils/RunProposer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
+            <state vertical-scroll-proportion="0.2">
               <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -74,15 +71,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Processor.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Processor.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/rti/paxos/roles/Processor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.525">
-              <caret line="62" column="19" selection-start-line="62" selection-start-column="19" selection-end-line="62" selection-end-column="19" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="135" column="40" selection-start-line="135" selection-start-column="40" selection-end-line="135" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3643#3644#0" expanded="true" />
-                <element signature="e#3713#3714#0" expanded="true" />
+                <element signature="e#3611#3612#0" expanded="true" />
+                <element signature="e#3681#3682#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -117,9 +114,9 @@
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/com/rti/paxos/utils/RunAcceptor.java" />
         <option value="$PROJECT_DIR$/src/com/rti/paxos/utils/RunProposer.java" />
-        <option value="$PROJECT_DIR$/src/com/rti/paxos/roles/Processor.java" />
         <option value="$PROJECT_DIR$/src/com/rti/paxos/roles/Proposer.java" />
         <option value="$PROJECT_DIR$/src/com/rti/paxos/roles/Acceptor.java" />
+        <option value="$PROJECT_DIR$/src/com/rti/paxos/roles/Processor.java" />
       </list>
     </option>
   </component>
@@ -857,12 +854,12 @@
       <workItem from="1461221078856" duration="250000" />
       <workItem from="1461221352828" duration="1019000" />
       <workItem from="1461252295950" duration="18674000" />
-      <workItem from="1461615210140" duration="5904000" />
+      <workItem from="1461615210140" duration="6089000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26003000" />
+    <option name="totallyTimeSpent" value="26188000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="4" y="23" width="1276" height="777" extended-state="6" />
@@ -976,8 +973,8 @@
           <caret line="139" column="9" selection-start-line="139" selection-start-column="9" selection-end-line="139" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3643#3644#0" expanded="true" />
-            <element signature="e#3713#3714#0" expanded="true" />
+            <element signature="e#3611#3612#0" expanded="true" />
+            <element signature="e#3681#3682#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1139,12 +1136,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rti/paxos/utils/RunProposer.java">
+    <entry file="file://$PROJECT_DIR$/src/com/rti/paxos/roles/Processor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <caret line="135" column="40" selection-start-line="135" selection-start-column="40" selection-end-line="135" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#3611#3612#0" expanded="true" />
+            <element signature="e#3681#3682#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1169,14 +1168,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rti/paxos/roles/Processor.java">
+    <entry file="file://$PROJECT_DIR$/src/com/rti/paxos/utils/RunProposer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.525">
-          <caret line="62" column="19" selection-start-line="62" selection-start-column="19" selection-end-line="62" selection-end-column="19" />
+        <state vertical-scroll-proportion="0.2">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3643#3644#0" expanded="true" />
-            <element signature="e#3713#3714#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -29,9 +29,7 @@ public class Processor extends DataReaderAdapter {
      * Processor Constructor to create topic, domain participant and
      * dataReader to be used for communication.
      */
-    public Processor(){}
-
-    public void initialize(){
+    public Processor(){
         // Create the DDS Domain participant on domain ID 0
         participant = DomainParticipantFactory.get_instance().create_participant(
                 0, // Domain ID = 0
