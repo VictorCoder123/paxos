@@ -4,6 +4,7 @@
     <list default="true" id="61cbcda5-8243-40fd-aca2-9551ac70cef3" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rti/paxos/roles/Acceptor.java" afterPath="$PROJECT_DIR$/src/com/rti/paxos/roles/Acceptor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rti/paxos/roles/Processor.java" afterPath="$PROJECT_DIR$/src/com/rti/paxos/roles/Processor.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rti/paxos/roles/Proposer.java" afterPath="$PROJECT_DIR$/src/com/rti/paxos/roles/Proposer.java" />
     </list>
     <ignored path="paxos.iws" />
@@ -53,7 +54,7 @@
         <entry file="file://$PROJECT_DIR$/src/com/rti/paxos/roles/Acceptor.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="37" column="53" selection-start-line="37" selection-start-column="53" selection-end-line="37" selection-end-column="53" />
+              <caret line="32" column="30" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -61,11 +62,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Proposer.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Proposer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/rti/paxos/roles/Proposer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.375">
-              <caret line="62" column="71" selection-start-line="62" selection-start-column="71" selection-end-line="62" selection-end-column="71" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -73,28 +74,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StringParser.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/rti/paxos/utils/StringParser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-              <folding>
-                <element signature="e#554#555#0" expanded="true" />
-                <element signature="e#614#615#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Processor.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Processor.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/rti/paxos/roles/Processor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="97" column="8" selection-start-line="97" selection-start-column="8" selection-end-line="97" selection-end-column="8" />
+            <state vertical-scroll-proportion="0.525">
+              <caret line="62" column="19" selection-start-line="62" selection-start-column="19" selection-end-line="62" selection-end-column="19" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3611#3612#0" expanded="true" />
-                <element signature="e#3681#3682#0" expanded="true" />
+                <element signature="e#3643#3644#0" expanded="true" />
+                <element signature="e#3713#3714#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -130,8 +118,8 @@
         <option value="$PROJECT_DIR$/src/com/rti/paxos/utils/RunAcceptor.java" />
         <option value="$PROJECT_DIR$/src/com/rti/paxos/utils/RunProposer.java" />
         <option value="$PROJECT_DIR$/src/com/rti/paxos/roles/Processor.java" />
-        <option value="$PROJECT_DIR$/src/com/rti/paxos/roles/Acceptor.java" />
         <option value="$PROJECT_DIR$/src/com/rti/paxos/roles/Proposer.java" />
+        <option value="$PROJECT_DIR$/src/com/rti/paxos/roles/Acceptor.java" />
       </list>
     </option>
   </component>
@@ -869,12 +857,12 @@
       <workItem from="1461221078856" duration="250000" />
       <workItem from="1461221352828" duration="1019000" />
       <workItem from="1461252295950" duration="18674000" />
-      <workItem from="1461615210140" duration="2240000" />
+      <workItem from="1461615210140" duration="5904000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22339000" />
+    <option name="totallyTimeSpent" value="26003000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="4" y="23" width="1276" height="777" extended-state="6" />
@@ -978,10 +966,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding>
-            <element signature="e#554#555#0" expanded="true" />
-            <element signature="e#614#615#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -991,8 +976,8 @@
           <caret line="139" column="9" selection-start-line="139" selection-start-column="9" selection-end-line="139" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3611#3612#0" expanded="true" />
-            <element signature="e#3681#3682#0" expanded="true" />
+            <element signature="e#3643#3644#0" expanded="true" />
+            <element signature="e#3713#3714#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1027,6 +1012,7 @@
         <state split_layout="FIRST">
           <first_editor vertical-scroll-proportion="0.0">
             <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <folding />
           </first_editor>
           <second_editor />
         </state>
@@ -1078,12 +1064,14 @@
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="22" column="34" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
+          <folding />
         </state>
       </provider>
       <provider editor-type-id="split-provider[text-editor;MultiMarkdownPreviewEditor]">
         <state split_layout="FIRST">
           <first_editor vertical-scroll-proportion="0.0">
             <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <folding />
           </first_editor>
           <second_editor />
         </state>
@@ -1124,17 +1112,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rti/paxos/utils/StringParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding>
-            <element signature="e#554#555#0" expanded="true" />
-            <element signature="e#614#615#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.1">
@@ -1154,15 +1131,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rti/paxos/roles/Processor.java">
+    <entry file="file://$PROJECT_DIR$/src/com/rti/paxos/utils/StringParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="97" column="8" selection-start-line="97" selection-start-column="8" selection-end-line="97" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3611#3612#0" expanded="true" />
-            <element signature="e#3681#3682#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.25">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1176,22 +1149,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rti/paxos/roles/Acceptor.java">
+    <entry file="file://$PROJECT_DIR$/src/com/rti/paxos/roles/Proposer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="37" column="53" selection-start-line="37" selection-start-column="53" selection-end-line="37" selection-end-column="53" />
+          <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rti/paxos/roles/Proposer.java">
+    <entry file="file://$PROJECT_DIR$/src/com/rti/paxos/roles/Acceptor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.375">
-          <caret line="62" column="71" selection-start-line="62" selection-start-column="71" selection-end-line="62" selection-end-column="71" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="32" column="30" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rti/paxos/roles/Processor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.525">
+          <caret line="62" column="19" selection-start-line="62" selection-start-column="19" selection-end-line="62" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3643#3644#0" expanded="true" />
+            <element signature="e#3713#3714#0" expanded="true" />
           </folding>
         </state>
       </provider>

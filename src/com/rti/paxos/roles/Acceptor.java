@@ -2,6 +2,8 @@ package com.rti.paxos.roles;
 
 import java.util.Random;
 
+import com.rti.dds.infrastructure.StatusKind;
+import com.rti.dds.subscription.Subscriber;
 import com.rti.dds.topic.Topic;
 import com.rti.dds.infrastructure.RETCODE_ERROR;
 import com.rti.dds.infrastructure.RETCODE_NO_DATA;
@@ -20,6 +22,19 @@ public class Acceptor extends Processor {
         Topic writeTopic = createTopic("Promise");
         dataReader = createReader(topic);
         dataWriter = createWriter(writeTopic);
+    }
+
+    @Override
+    public StringDataReader createReader(Topic topic){
+        // Create the data reader using the default subscriber
+        StringDataReader new_dataReader = (StringDataReader) participant.create_datareader(
+                topic,
+                Subscriber.DATAREADER_QOS_DEFAULT,
+                new Acceptor(),         // Listener
+                StatusKind.DATA_AVAILABLE_STATUS);
+        // Fail to create dataReader
+        if (new_dataReader == null) System.err.println("Unable to create DDS Data Reader");
+        return new_dataReader;
     }
 
     @Override

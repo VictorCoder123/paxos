@@ -4,8 +4,10 @@ import java.util.Random;
 
 import com.rti.dds.infrastructure.RETCODE_ERROR;
 import com.rti.dds.infrastructure.RETCODE_NO_DATA;
+import com.rti.dds.infrastructure.StatusKind;
 import com.rti.dds.subscription.DataReader;
 import com.rti.dds.subscription.SampleInfo;
+import com.rti.dds.subscription.Subscriber;
 import com.rti.dds.topic.Topic;
 import com.rti.dds.domain.DomainParticipantFactory;
 import com.rti.dds.type.builtin.StringDataReader;
@@ -45,6 +47,19 @@ public class Proposer extends Processor {
         String msg = StringParser.createMsg(ID, proposal);
         publish(msg);
         System.out.println(ID + " sends proposal " + Integer.toString(proposal));
+    }
+
+    @Override
+    public StringDataReader createReader(Topic topic){
+        // Create the data reader using the default subscriber
+        StringDataReader new_dataReader = (StringDataReader) participant.create_datareader(
+                topic,
+                Subscriber.DATAREADER_QOS_DEFAULT,
+                new Proposer("", 0),         // Listener
+                StatusKind.DATA_AVAILABLE_STATUS);
+        // Fail to create dataReader
+        if (new_dataReader == null) System.err.println("Unable to create DDS Data Reader");
+        return new_dataReader;
     }
 
     @Override

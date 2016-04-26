@@ -29,7 +29,9 @@ public class Processor extends DataReaderAdapter {
      * Processor Constructor to create topic, domain participant and
      * dataReader to be used for communication.
      */
-    public Processor(){
+    public Processor(){}
+
+    public void initialize(){
         // Create the DDS Domain participant on domain ID 0
         participant = DomainParticipantFactory.get_instance().create_participant(
                 0, // Domain ID = 0
@@ -142,5 +144,9 @@ public class Processor extends DataReaderAdapter {
         System.out.println("Shutting down...");
         participant.delete_contained_entities();
         DomainParticipantFactory.get_instance().delete_participant(participant);
+    }
+
+    public static void main(String[] args){
+
     }
 }
